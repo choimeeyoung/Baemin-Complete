@@ -1,0 +1,373 @@
+.main .bg{
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    background-image: url("../images/main_05@2x.jpg");
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    transform:scale(1.5);
+    transform-origin: center;
+    transition: transform 1.5s;
+    -webkit-transition: transform 1.5s;
+    -moz-transition: transform 1.5s;
+    -o-transition: transform 1.5s;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.main .bg.active{
+    transform:scale(1);
+}
+.main .pageContentWrap .appDown{
+    width: 262px;
+    display: inline-block;
+    position: absolute;
+    bottom: 0;
+    right: 50px;
+}
+
+.storeInfo .road{
+    width: 232px;
+    position: absolute;
+    top:30%;
+    right: 35%;
+}
+.storeInfo .bike{
+    width: 204px;
+    position: absolute;
+    top:61%;
+    left: 49%;
+}
+.storeInfo .bike.active{
+    animation: bike-animation .5s ease forwards;
+    -webkit-animation:bike-animation .5s ease forwards;
+    -moz-animation:bike-animation .5s ease forwards;
+    -o-animation:bike-animation .5s ease forwards;
+}
+@keyframes bike-animation {
+    0%{
+        top:61%;
+        left: 49%;
+    }
+    100%{
+        top:75%;
+        left: 60%;
+    }
+}
+@-webkit-keyframes bike-animation {
+    0%{
+        top:61%;
+        left: 49%;
+    }
+    100%{
+        top:75%;
+        left: 60%;
+    }
+}
+@-moz-keyframes bike-animation {
+    0%{
+        top:61%;
+        left: 49%;
+    }
+    100%{
+        top:75%;
+        left: 60%;
+    }
+}
+@-o-keyframes bike-animation {
+    0%{
+        top:61%;
+        left: 49%;
+    }
+    100%{
+        top:75%;
+        left: 60%;
+    }
+}
+
+.advantageInfo .animation{
+    width: 430px;
+    right: 0;
+}
+
+.giftInfo .animation{
+    width: 360px;
+    right: 10%;
+}
+
+.payInfo .animation{
+    width: 360px;
+    right: 10%;
+}
+
+.slideUpAnimation{
+    position: absolute;
+    display: inline-block;
+    bottom:0;
+    transform:translateY(100%);
+    opacity: 0;
+}
+.slideUpAnimation.active{
+    animation:slideUpAnimation .8s forwards ease;
+    -webkit-animation:slideUpAnimation .8s forwards ease;
+    -moz-animation:slideUpAnimation .8s forwards ease;
+    -o-animation:slideUpAnimation .8s forwards ease;
+}
+@keyframes slideUpAnimation {
+    0%{
+        opacity: 0;
+        transform:translateY(100%);
+    }
+    100%{
+        opacity: 1;
+        transform:translateY(0%);
+    }
+}
+@-webkit-keyframes slideUpAnimation {
+    0%{
+        opacity: 0;
+        transform:translateY(100%);
+    }
+    100%{
+        opacity: 1;
+        transform:translateY(0%);
+    }
+}
+@-moz-keyframes slideUpAnimation {
+    0%{
+        opacity: 0;
+        transform:translateY(100%);
+    }
+    100%{
+        opacity: 1;
+        transform:translateY(0%);
+    }
+}
+@-o-keyframes slideUpAnimation {
+    0%{
+        opacity: 0;
+        transform:translateY(100%);
+    }
+    100%{
+        opacity: 1;
+        transform:translateY(0%);
+    }
+}
+
+.bMartInfo .animation{
+    width: 430px;
+    position: absolute;
+    bottom:20%;
+    transform : translate(200%);
+    opacity: 0;
+}
+.bMartInfo .animation.active{
+    animation:deliveryAnimation .8s forwards ease;
+    -webkit-animation:deliveryAnimation .8s forwards ease;
+    -o-animation:deliveryAnimation .8s forwards ease;
+    -moz-animation:deliveryAnimation .8s forwards ease;
+}
+@keyframes deliveryAnimation {
+    0%{
+        transform : translate(200%);
+        opacity: 0;
+    }
+    100%{
+        transform : translate(100%);
+        opacity: 1;
+    }
+}
+@-webkit-keyframes deliveryAnimation {
+    0%{
+        transform : translate(200%);
+        opacity: 0;
+    }
+    100%{
+        transform : translate(100%);
+        opacity: 1;
+    }
+}
+@-o-keyframes deliveryAnimation {
+    0%{
+        transform : translate(200%);
+        opacity: 0;
+    }
+    100%{
+        transform : translate(100%);
+        opacity: 1;
+    }
+}
+@-moz-keyframes deliveryAnimation {
+    0%{
+        transform : translate(200%);
+        opacity: 0;
+    }
+    100%{
+        transform : translate(100%);
+        opacity: 1;
+    }
+}
+
+
+.sendEmail.active{
+    visibility: visible;
+}
+.sendEmail{
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top:0;
+    left: 0;
+    background-color:rgba(0,0,0,.5);
+    z-index: 100;
+    visibility: hidden;
+}
+
+.sendEmail .emailFormWrap{
+    width: 100%;
+    padding:40px 0;
+    background-color: #fff;
+    position: absolute;
+    bottom: 0;
+}
+
+.sendEmail .emailFormTitle{
+    width:1024px;
+    margin:0 auto;
+    padding:0 50px;
+    position: relative;
+}
+.sendEmail .emailFormTitle figure{
+    width: 30px;
+    position: absolute;
+    top: 0;
+    right: 50px;
+}
+.sendEmail .emailFormTitle h2{
+    width: 537px;
+    margin: 0 auto 40px;
+}
+.sendEmail .emailFormTitle p{
+    color:#2ac1bc;
+    font-weight: 100;
+    font-size: 0.9em;
+    text-align: center;
+    margin-bottom:10px;
+}
+
+.sendEmail .emailForm{
+    width: 330px;
+    height: 50px;
+    padding:10px 0 10px 20px;
+    box-sizing: border-box;
+    margin: 0 auto 25px;
+    border:1px solid #333;
+    border-radius: 50px;
+}
+.sendEmail .emailForm input[type='email']{
+    width: 230px;
+    height: 100%;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+}
+.sendEmail .emailForm span{
+    width: 67px;
+    display: inline-block;
+    float: right;
+    margin:7px 7px 0 0;
+}
+
+.sendEmail .termsForm{
+    width: 380px;
+    height: 115px;
+    margin: 0 auto 20px;
+}
+.sendEmail .termsForm .agree{
+    width: 330px;
+    margin: 0 auto 20px;
+    position: relative;
+}
+.sendEmail .termsForm label::before{
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    box-sizing: border-box;
+    border:1px solid #979797;
+    background: #f4f4f4;
+    content:"";
+    position: absolute;
+    left: 0;
+}
+.sendEmail .termsForm input[type="checkbox"]:checked + label::before{
+    height: 31px;
+    border:none;
+    background: url("../images/rectangle-7@2x.png");
+    background-size: 21px;
+    position: absolute;
+    top: -11px;
+}
+.sendEmail .termsForm label{
+    color:#4a4a4a;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 21px;
+    padding-left: 15px;
+}
+.sendEmail .termsForm a{
+    width: 50px;
+    color: #9b9b9b;
+    font-weight: normal;
+    font-size: 14px;
+    text-decoration: underline;
+    float: right;
+    line-height: 25px;
+    cursor: pointer;
+}
+
+.sendEmail table{
+    width: 100%;
+    visibility: hidden;
+}
+.sendEmail table.active{
+    visibility: visible;
+}
+.sendEmail table th,
+.sendEmail table td{
+    border:1px solid #979797;
+}
+.sendEmail table th{
+    padding:9px 0 6px;
+    background:#bababa;
+    color: #fff;
+    font-size: 13px;
+}
+.sendEmail table td{
+    padding:11px 0;
+    color: #4a4a4a;
+    font-size: 13px;
+    text-align: center;
+}
+
+.sendEmail ul{
+    width: 380px;
+    margin: 0 auto;
+    padding-top:25px;
+    background-image: url("../images/line@2x.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+.sendEmail ul li{
+    font-size: 12px;
+    line-height: 20px;
+    color: #888888;
+    font-weight: 100;
+}
+
+
+
+
+
+
+

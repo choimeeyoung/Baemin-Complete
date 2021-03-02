@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>배달의 민족</title>
+    <link type="text/css" rel="stylesheet" href="css/import.css"/>
+    <script type="text/javascript" src="js/jquery-3.5.1.js"></script>
+    <script type="text/javascript" src="js/jquery.fullPage.js"></script>
+    <script type="text/javascript"src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+    <script>
+        let doubleSubmitFlag = false;
+        $(document).ready(function() {
+            let randomNum = Math.floor(Math.random()*(5-1+1)) + 1;
+            let mainTitle = "images/main_text_0"+randomNum+"@2x.png";
+            let mainBg = "images/main_0"+randomNum+"@2x.jpg";
+            $(".pageContentWrap .title img").attr("src",mainTitle)
+            $(".main .bg").css("background-image","url("+mainBg+")")
+
+            fullPage();
+
+            $(".sendEmail .emailForm .submitEmail").on("click",function(){
+                sendEmail();
+            })
+
+            $(".sendEmail .termsForm a").on("click",function(e){
+                e.preventDefault();
+                $(".sendEmail table").toggleClass("active");
+                $(this).text( $(this).text() == '내용접기' ? "내용보기" : "내용접기");
+            });
+
+            $(".sendEmail .emailFormTitle figure").on("click",function(){
+                $(".sendEmail").removeClass("active");
+            })
+        });
+
+        function animation(){
+            $(".fullPage > section.active .animation").addClass("active")
+        }
+
+        function doubleSubmitCheck(){
+            if(doubleSubmitFlag){
+                return doubleSubmitFlag;
+            }else{
+                doubleSubmitFlag = true;
+                return false;
+            }
+        }
+
+        function sendEmail(){
+            if(doubleSubmitCheck()) return;
+
+            emailjs.init("user_RcMwmjvISCiQQRHOvDqL1");
+            const templateParams = {
+                //각 요소는 emailJS에서 설정한 템플릿과 동일한 명으로 작성!
+                email : $('.sendEmail .emailForm input[name="email"]').val(),
+            };
+            emailjs.send('service_y7z8n1h', 'template_dp5j64s', templateParams)
+                //emailjs.send('service ID', 'template ID', 보낼 내용이 담긴 객체)
+                .then(function(response) {
+                    console.log('SUCCESS!', response.status, response.text);
+                    if ( response.status == 200){
+                        alert("성공")
+                    }
+                    doubleSubmitFlag = false;
+                }, function(error) {
+                    console.log('FAILED...', error);
+                    alert("실패")
+                });
+        }
+
+        function fullPage(){
+            $('.fullPage').fullpage({
+                autoScrolling: true,
+                sectionSelector: "section",
+                anchors: ['1', '2', '3','4','5','6','7'],
+                menu: '.navList',
+                afterLoad: function(anchorLink,index){
+                    if(index === 1){
+                        $(".navList").removeClass("active");
+                        $(".appDownFix").removeClass("active");
+                        setTimeout(function(){
+                            animation();
+                        },500)
+
+                        setTimeout(function(){
+                            $(".sendEmail").addClass("active");
+                        },10000)
+                    }else{
+                        $(".navList").addClass("active");
+                        $(".appDownFix").addClass("active");
+                        animation();
+                    }
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+
+<article class="wrap">
+    <header>
+        <h1>
+            <img src="images/logo@2x.png" alt="배달의 민족">
+        </h1>
+        <ul>
+            <li>
+                <a href="https://www.facebook.com/smartbaedal">
+                    <img src="images/iconFacebook@2x.png" alt="배달의 민족 facebook">
+                </a>
+            </li>
+            <li>
+                <a href="https://www.instagram.com/baemin_official/">
+                    <img src="images/iconInstagram@2x.png" alt="배달의 민족 instagram">
+                </a>
+            </li>
+            <li>
+                <a href="https://blog.naver.com/smartbaedal">
+                    <img src="images/iconBlog@2x.png" alt="배달의 민족 blog">
+                </a>
+            </li>
+            <li>
+                <a href="https://www.youtube.com/user/smartbaedal2">
+                    <img src="images/iconYoutube@2x.png" alt="배달의 민족 youtube">
+                </a>
+            </li>
+        </ul>
+        <div class="appDownFix">
+            <img src="images/btn_down_app@2x.png" alt="배민앱 다운로드">
+        </div>
+    </header>
+
+    <div class="scroll">
+        <figure >
+            <img src="images/scroll@2x.png" alt="스크롤">
+        </figure>
+    </div>
+
+    <div class="fullPage">
+        <section class="main" data-anchor="1">
+            <figure class="bg animation"></figure>
+            <div class="header-rider animation">
+                <a href="http://www.baeminriders.kr/">
+                    <img src="images/btn_rider.png" alt="배달의 민족 라이더 채용">
+                </a>
+            </div>
+            <div class="pageContentWrap">
+                <h2 class="title">
+                    <img src="images/main_text_05@2x.png" alt="공복에 떡볶이가 그리울 때">
+                </h2>
+                <figure class="appDown">
+                    <img src="images/btn_down@2x.png" alt="배민앱 다운로드">
+                </figure>
+            </div>
+        </section>
+        <section class="storeInfo" data-anchor="2">
+            <div class="pageContentWrap">
+                <h2 class="title">
+                    <img src="images/ctn01_text_01@2x.png" alt="바로 그거! 배민에 다~ 있다.">
+                </h2>
+                <p class="description">
+                    3천만 이상이 선택한 배달의 민족,<br>
+                    업계 최다 배달가능 업소 보유중 ! <br>
+                    <br>
+                    (2017년 11월 기준)
+                </p>
+
+                <figure class="road">
+                        <img src="images/img-road@2x.png" alt="길">
+                    </figure>
+                <figure class="bike animation">
+                        <img src="images/img-bike@2x.png" alt="오토바이">
+                    </figure>
+            </div>
+        </section>
+        <section class="advantageInfo" data-anchor="3">
+            <div class="pageContentWrap">
+                <h2 class="title">
+                    <img src="images/ctn02_text_02@2x.png" alt="찾아가던 맛집을 원하는 곳에서">
+                </h2>
+                <p class="description">
+                    마트까지 가지 않아도, 많이 사지 않아도<br>
+                    주문하신 상품을 바로 배달해드립니다.
+                    <br>
+                    서울, 인천 및 경기 일부 지역에서 서비스 이용 가능!
+                </p>
+                <div class="animation slideUpAnimation">
+                    <figure>
+                        <img src="images/img-people@2x.png" alt="사람들">
+                    </figure>
+                </div>
+            </div>
+        </section>
+        <section class="giftInfo" data-anchor="4">
+            <div class="pageContentWrap">
+                <h2 class="title">
+                    <img src="images/ctn05_text_01@2x.png" alt="너에게 밥을 보낸다. 배민선물하기">
+                </h2>
+                <p class="description">
+                    마트까지 가지 않아도, 많이 사지 않아도<br>
+                    주문하신 상품을 바로 배달해드립니다.
+                    <br>
+                    서울, 인천 및 경기 일부 지역에서 서비스 이용 가능!
+                </p>
+                <div class="animation slideUpAnimation">
+                    <figure>
+                        <img src="images/img-present@2x.png" alt="선물상자 든 사람">
+                    </figure>
+                </div>
+            </div>
+        </section>
+        <section class="bMartInfo" data-anchor="5">
+            <div class="pageContentWrap">
+                <h2 class="title">
+                    <img src="images/ctn04_text_01@2x.png" alt="초소량 번쩍배달 B마트">
+                </h2>
+                <p class="description">
+                    마트까지 가지 않아도, 많이 사지 않아도<br>
+                    주문하신 상품을 바로 배달해드립니다.
+                    <br>
+                    서울, 인천 및 경기 일부 지역에서 서비스 이용 가능!
+                </p>
+                <div class="animation">
+                    <figure>
+                        <img src="images/bmart_rider@2x.png" alt="배민 딜리버리">
+                    </figure>
+                </div>
+            </div>
+        </section>
+        <section class="payInfo" data-anchor="6">
+            <div class="pageContentWrap">
+                <h2 class="title">
+                    <img src="images/ctn03_text_02@2x.png" alt="할인과 결제 사이 단 10초!">
+                </h2>
+                <p class="description">
+                    마트까지 가지 않아도, 많이 사지 않아도<br>
+                    주문하신 상품을 바로 배달해드립니다.
+                    <br>
+                    서울, 인천 및 경기 일부 지역에서 서비스 이용 가능!
+                </p>
+                <div class="animation slideUpAnimation">
+                    <figure>
+                        <img src="images/img-flag@2x.png" alt="배민 페이 깃발 든 사람">
+                    </figure>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div class="sendEmail">
+        <section class="emailFormWrap">
+            <div class="emailFormTitle">
+                <h2>
+                    <img src="images/txt-popup-pc@2x.png" alt="배달의 민족, 이제는 더 간편하게 앱으로 만나오세요!">
+                </h2>
+                <p>앱 설치주소 E-mail 로 받기</p>
+                <figure>
+                    <img src="images/btn_close@2x.png">
+                </figure>
+            </div>
+            <div class="emailForm">
+                <input type="email" name="email" placeholder="E-Mail 주소 입력">
+                <span class="submitEmail">
+                    <img src="images/btn_send_disabled@2x.png" alt="보내기 버튼">
+                </span>
+            </div>
+            <div class="termsForm">
+                <div class="agree">
+                    <input type="checkbox" id="checkbox">
+                    <label for="checkbox">
+                        개인정보 수집/이용에 동의합니다.
+                    </label>
+                    <a role="button">내용보기</a>
+                </div>
+                <table>
+                    <tr>
+                        <th>항목</th>
+                        <th>수집목적</th>
+                        <th>보유기간</th>
+                    </tr>
+                    <tr>
+                        <td>E-Mail 주소</td>
+                        <td>E-Mail 발송 및 부정이용방지</td>
+                        <td>목적달성 1일 후 파기</td>
+                    </tr>
+                </table>
+            </div>
+
+            <ul>
+                <li>* 이용자 본인 확인을 목적으로 인증번호 확인 절차가 필요합니다.</li>
+                <li>* 인증번호 및 앱 설치주소 전송 비용은 무료입니다.</li>
+                <li>* 한 개의 휴대폰 번호로 하루 최대 3번까지 전송이 가능합니다.</li>
+            </ul>
+        </section>
+    </div>
+
+    <ul class="navList active">
+        <li data-menuanchor="1"></li>
+        <li data-menuanchor="2"></li>
+        <li data-menuanchor="3"></li>
+        <li data-menuanchor="4"></li>
+        <li data-menuanchor="5"></li>
+        <li data-menuanchor="6"></li>
+    </ul>
+</article>
+</body>
+</html>
